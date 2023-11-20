@@ -1,12 +1,12 @@
-# E-commerce Back End Starter Code
+# brandon-orm-ecommerce-backend
 
-[Video Demonstration]()
+[Video Demonstration](https://www.youtube.com/watch?v=f1ctzJ9BzcE)
 
 ![Github License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## Description
 
-This project is an Ecommerce backend application connecting `GET`, `POST`, `PUT`, and `DELETE` routes to a database. The database interactions are handled though the `Sequelize` ORM. All of the routes use id's associated with items and their tags. The hardest part was figuring out the foreign key many-to-many relationship route. I learned a lot about how to use ORM's, and creating routing requests using models.
+This project is an E-commerce backend application connecting `GET`, `POST`, `PUT`, and `DELETE` routes to a database. The database interactions are handled though the `Sequelize` ORM. All of the routes use id's associated with items and their tags. The hardest part was figuring out the foreign key many-to-many relationship route. I learned a lot about how to use ORM's, and creating routing requests using models.
 
 ## Table of contents
 
@@ -37,7 +37,7 @@ This project is an Ecommerce backend application connecting `GET`, `POST`, `PUT`
 7. Open `Insomnia` and enter `http://localhost:3001/api/routename`
 8. Click the `GET` next to the site address to change the operation that is being performed.
 9. Example routes include `/categories`, `/products`, and `/tags`. If you want to search/delete a specific product, category, or tag, type `/:id` after your route name with a number replacing `:id`.
-10. For `POST` and `PUT` requests, click `Body` under the `GET`.
+10. For `POST` and `PUT` requests, click `Body` under the `GET` and site address.
 11. Example category routes: click `JSON`, and type a new id for a create request, or update for an update request.
 
 ### Example Home Page
