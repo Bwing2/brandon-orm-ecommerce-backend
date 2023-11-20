@@ -45,12 +45,25 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   // update a tag's name by its `id` value
-  const tagData = await Tag.update({
-    where: {
-      id: req.params.id,
-    },
-  });
-  //////////////////////////
+  try {
+    // [tagData] would return the number of rows updated using array destructuring
+    const [tagData] = await Tag.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (tagData === 0) {
+      res.status(404).json({ message: "No tag names have been changed." });
+      return;
+    }
+
+    res
+      .status(200)
+      .json(`tag_name with an id of ${req.params.id} has been updated!`);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.delete("/:id", async (req, res) => {
@@ -67,7 +80,9 @@ router.delete("/:id", async (req, res) => {
       return;
     }
 
-    res.status(200).json(tagData);
+    res
+      .status(200)
+      .json(`Tag with an id of ${req.params.id} has been deleted.`);
   } catch (err) {
     res.status(500).json(err);
   }

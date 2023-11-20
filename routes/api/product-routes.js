@@ -25,10 +25,12 @@ router.get("/:id", async (req, res) => {
     const productData = await Product.findByPk(req.params.id, {
       include: [{ model: Category }, { model: Tag }],
     });
+
     if (!productData) {
       res.status(404).json({ message: "No product found with that id." });
       return;
     }
+
     res.status(200).json(productData);
   } catch (err) {
     res.status(500).json(err);
@@ -103,7 +105,11 @@ router.put("/:id", (req, res) => {
         });
       }
 
-      return res.json(product);
+      res
+        .status(200)
+        .json(
+          `tagIds for product with an id of ${req.params.id} have been updated!`
+        );
     })
     .catch((err) => {
       // console.log(err);
@@ -125,7 +131,9 @@ router.delete("/:id", async (req, res) => {
       return;
     }
 
-    res.status(200).json(productData);
+    res
+      .status(200)
+      .json(`Product with an id of ${req.params.id} has been deleted.`);
   } catch (err) {
     res.status(500).json(err);
   }
